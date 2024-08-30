@@ -1,0 +1,10 @@
+section .data
+    who db "I'm Sexy"
+section .text
+    global main
+main:
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, who
+    mov rdx, 8
+    syscall
