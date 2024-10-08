@@ -19,9 +19,8 @@ int main() {
     for (int i = 0; i < N; i++) {
         int cur = x[i];
 
-        for (int j = cur*2; j <= 1000000; j += cur) {
+        for (int j = cur*2; j <= 1000000; j += cur)
             if (isCardExist[j]) score[cur]++, score[j]--;
-        }
     }
 
     for (int i = 0; i < N; i++) printf("%d ", score[x[i]]);
