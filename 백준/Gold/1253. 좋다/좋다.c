@@ -46,8 +46,8 @@ int main() {
 
     int ans = 0;
 
-    // 피벗 이분탐색. A[j]를 피벗으로, A[j]와의 합이 A[i]인 값을 찾기
-    for (int i = 0; i < N; i++) {
+    // 풀이1 - 피벗 이분탐색. A[j]를 피벗으로, A[j]와의 합이 A[i]인 값을 찾기
+    /* for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             if (i == j) continue;
             int target = A[i] - A[j];
@@ -60,6 +60,22 @@ int main() {
                 ans++;
                 break;
             }
+        }
+    } */
+
+    // 풀이2 - 투포인터
+    for (int i = 0; i < N; i++) {
+        int l = 0, r = N-1, target = A[i];
+
+        while (l < r) {
+            if (l == i && ++l) continue;
+            else if (r == i && r--) continue;
+
+            int cur = A[l] + A[r];
+            
+            if (cur < target) l++;
+            else if (cur > target) r--;
+            else if (++ans) break;
         }
     }
 
