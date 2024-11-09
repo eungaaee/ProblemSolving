@@ -2,8 +2,8 @@
 #define abs(n) ((n) > 0 ? (n) : -(n))
 
 int size;
-_Bool board[20][20]; // i, j >= 0
-_Bool pos_used[20], neg_used[20]; // y=x+i, y=-x+i 대각선이 사용되었는지, i >= 1
+_Bool board[10][10]; // i, j >= 0
+_Bool pos_used[21], neg_used[21]; // y=x+i, y=-x+i 대각선이 사용되었는지, i >= 1
 int maximum_amount;
 
 void backtrack(int idx, int placed) {
@@ -33,9 +33,11 @@ void backtrack(int idx, int placed) {
 int main() {
     scanf("%d", &size);
 
+    int t_f;
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
-            scanf("%d", board[i] + j);
+            scanf("%d", &t_f);
+            board[i][j] = t_f; // _Bool 자료형을 %d로 입력 받으면 제출했을 때만 틀림. 왜 그러지 근데
         }
     }
 
